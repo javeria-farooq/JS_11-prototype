@@ -1,137 +1,30 @@
-/*first we create our simple obj: and use this keyword in it*/
-
-/*const student = {
-    fullName : "javeria farooq",
-    marks: 74,
-    printMarksFnc: function myFnc() {
-        console.log(`print marks in fnc = ${marks}`)
-    }
-}*/
-
-/*console.log(`Full Name of a student is : ${student.fullName}`)
-console.log(`marks of a student is: ${student.marks}`)
-console.log(`now print the value of student marks = ${student.printMarksFnc()}`)*/
-
-/*ab yhn pe hmne ise kaha h k student obj m jao r usmn se printMarks wle fnc ko invoke kro jb usne us fnc ko invoke
-kia t usmn console ki statement th t islye ye console pe print krwaega lkn actual m ye console pe print nh hga qk is
-fnc k undr hm js marks ko conosle pe print krwna chah rh hn wo marks ek obj k undr h ab chahe wo obj is fnc ka h ya
-na h isse frq nh prta lkn agr wo ksi obj m h t oose oosi trhn access krnge js trhn ksi bh obj ki ksi bh propert ko
-access krte hn yni objName.propertyName is trhn:*/
-
-/*const student = {
-    fullName: "javeria farooq",
-    marks: 74,
-    printMarksFnc: function myFnc() {
-        console.log(`print marks in fnc = ${this.marks}`) //here we also use objName means: student
-        yhn hm ye bh lkh skte hn student.marks. basically yhn this lkhne ka mtlb hi ye h k mn js obj k undr hn isi
-        obj yni this hi obj ki property marks ko access krna chahti hn.
-    }
+/*//first we create simple objs
+let obj = {
+    name: 'javeria',
+    courseOnGoing : 'web development',
+    courseFuture : 'Gen AI'
 }
+console.log(obj)
+// all about prototypes
 
-console.log(student)
-console.log(`Full Name of a student is : ${student.fullName}`)
-console.log(`marks of a student is: ${student.marks}`)
-console.log(`${student.printMarksFnc()}`)
-/*acha ek bt k yhn sth sth undefined bh aarh h pta nh q.shyd jb hm ksi obj ki property m stored fnc ko console pe
-print krwa rh hn tb wo print t hrh h lkn sth hi next line m undefined bh aarh h*/
+obj.__proto__ = 'hello' // it doesn't set
 
-/*now we explore the type of array and fnc and see that the obj named prototype: */
+let msg = ' hello'
+obj.__proto__ = msg // it also didn't set
 
-/*let arr = [1, 2, 3, 4, 5]
-console.log(arr)
-console.log(typeof arr)
+obj.__proto__ = {
+    msg : 'hello'
+} // it sets
 
-let arrowFnc = () => {
-    console.log(`hello this is my arrow function`)
-}
+obj.__proto__ = ['apple', 'mango', 'peach'] // it also sets but overwrites
 
-function nameFnc() {
-    console.log(`hello this is my naming function`)
-}
+obj.__proto__ = {
+    msg : 'hello',
+    arr : ['apple', 'mango', 'peach']
+} //this is perfectly set*/
 
-console.log(`type of arrow func is = ${typeof arrowFnc}`)
-console.log(`type of naming func is = ${typeof nameFnc}`)
-console.log(typeof arrowFnc)
-console.log(typeof arr)*/
-
-/*now we check to create our own prototype in simple way: */
-
-/*let arr = ["jav", "aliza", "afnan"]
-arr.__proto__ = "yasmeen"
-console.log(arr)*/
-
-/*let arr = ["jav", "aliza", "afnan"]
-let myName = "yasmeen"
-arr.__proto__ = myName
-console.log(arr)*/
-
-/*let arr = ["jav", "aliza", "afnan"]
-let arr2 = ["yasmeen", "farooq"]
-arr.__proto__ = arr2
-console.log(arr)*/
-
-/*let myObj = {
-    fullName : "javeria",
-    age: 20,
-}
-
-let myObj2 = {
-    fullName : "aliza",
-    age : 17,
-}
-
-myObj.__proto__ = myObj2
-console.log(myObj)*/
-
-/*let arr = [1, 2, 3]
-let myObj = {
-    fullName : "javeira",
-    age : 20,
-}
-
-arr.__proto__ = myObj
-console.log(arr)*/
-
-/*let myObj = {
-    fullName : "javeira",
-    age : 20,
-}
-
-let arr = [1, 2, 3]
-
-myObj.__proto__ = arr
-console.log(myObj)*/
-
-/*methods of defining fnc in an obj */
-
-/*1st method is simple from that we defined. */
-
-/*const myObj = {
-    firstFnc : function myFnc() {
-        console.log("this is the function defining by simple method")
-    }
-}*/
-
-/*2nd method is that we defining our fnc without fncName but this is allowed only in an obj */
-
-/*const myObj2 = {
-    secFnc: function() {
-        console.log(`this is function which defines without function name`)
-    }
-}*/
-
-/*3rd method is that we defining our fnc without function keyword and obj keyName but this is also allowed only in an
-obj*/
-
-/*const myObj3 = {
-    myFnc2 () {
-        console.log(`this is function which defines without function keyword and object key name`)
-    }
-}*/
-
-/*now we set our own prototype in professional way*/
-
-/*const employeeTax = {
+/* //prototype practice
+const employeeTax = {
     calcTax() {
         console.log(`tax rate is 10%`)
     },
@@ -160,24 +53,40 @@ employeeSalary2.__proto__ = employeeTax
 employeeSalary3.__proto__ = employeeTax
 employeeSalary4.__proto__ = employeeTax*/
 
-/*prototype: */
-
-/*const employee = {
-    calcTax(){
-        console.log(`tax rate is 10%`)
-    }
-    calcTax: function(){
-        console.log(`tax rate is 10%`)
-    }
+/*// prototypal inheritance: jb obj m koi property nh hgi t wo uske prototype m check krega.
+let user = {
+    fullName : 'javeria',
+    age : 20
 }
 
-const newEmployee = {
-    name: 'javeria',
-    age: 60
+let student = {
+    fullName : 'aliza',
+    age : 17,
+    profession : 'student' //ye obj m nh th lkn prototype m mili t return krdga
 }
 
-console.log(employee, employee.calcTax)
-console.log(newEmployee, newEmployee.name, newEmployee.salary)
-newEmployee.__proto__ = employee
+user.__proto__ = student
+console.log(user)
+console.log(student)*/
 
-console.log(newEmployee, newEmployee.calcTax())*/
+// factory fnc
+
+function CreateEmployee(firstName, lastName, age, salary, department) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+    this.salary = salary
+    this.department = department
+}
+CreateEmployee.prototype.calTax = function() {
+    let taxRate = this.salary * 10 / 100 // 10%
+    return (`the tax rate of ${this.salary} is ${taxRate}`)
+}
+
+let employee1 = new CreateEmployee('mehak', 'alamgir', 28, 50000, 'Content writing')
+console.log(employee1)
+console.log(employee1.calTax())
+
+let employee2 = new CreateEmployee('daniyal', 'nagori', 38, 200000, 'software engineer')
+console.log(employee2)
+console.log(employee2.calTax())
